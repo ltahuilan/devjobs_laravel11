@@ -1,6 +1,11 @@
+{{-- x-guest-layout render from app/View/Components/GuestLayout.php --}}
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <p class="text-center text-gray-700 dark:text-gray-300 font-bold text-xl mb-4">
+        Login
+    </p>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -8,7 +13,14 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email"
+                            class="block mt-1 w-full"
+                            type="email"
+                            name="email"
+                            :value="old('email')"
+                            autofocus
+                            autocomplete="username" />
+
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -19,7 +31,7 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -32,16 +44,22 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <div class="flex items-center justify-between my-4">
+            {{-- @if (Route::has('password.request'))
+            @endif --}}
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <x-guest-links href="{{ route('password.request') }}">
+                {{ __('Forgot your password?') }}
+            </x-guest-links>
+
+            <x-guest-links href="{{ route('register') }}">
+                {{ __('You still don\'t have an account?') }}
+            </x-guest-links>
+
         </div>
+
+        <x-primary-button class="w-full justify-center my-4">
+            {{ __('Log in') }}
+        </x-primary-button>
     </form>
 </x-guest-layout>
