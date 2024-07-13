@@ -15,7 +15,10 @@ class VacanciesController extends Controller
      */
     public function index()
     {
-        //
+        //En laravel 11 es necesario el uso de la clase Gate para acceder al policy
+        //NO requiere instancia, se le pasa la clase
+        Gate::authorize('viewAny', Vacancy::class);
+
         return view('vacancies.index');
     }
 
@@ -24,7 +27,10 @@ class VacanciesController extends Controller
      */
     public function create()
     {
-        //
+        //En laravel 11 es necesario el uso de la clase Gate para acceder al policy
+        //NO requiere instancia, se le pasa la clase
+        Gate::authorize('viewAny', Vacancy::class);
+        
         return view('vacancies.create');
     }
 
@@ -52,7 +58,7 @@ class VacanciesController extends Controller
      */
     public function edit(Vacancy $vacancy)
     {
-        //
+        //En laravel 11 es necesario el uso de la clase Gate para acceder al policy
         Gate::authorize('update', $vacancy);
         
         return view('vacancies.edit', [

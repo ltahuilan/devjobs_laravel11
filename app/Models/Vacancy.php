@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Salary;
+use App\Models\Category;
+use App\Models\Candidate;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vacancy extends Model
 {
@@ -31,4 +35,32 @@ class Vacancy extends Model
         'file',
         'user_id'
     ];
+
+    public function salary()
+    {
+        return $this->belongsTo(Salary::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Una vacante puede tener muchos canditados
+     * on to many, uno a muchos
+     */
+    public function candidate()
+    {
+        return $this->hasMany(Candidate::class);
+    }
+
+    /**
+     * Una vacante pertenece a un reclutador
+     * belongs to
+     */
+    public function recruiter()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

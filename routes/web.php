@@ -11,13 +11,16 @@ Route::get('/', function () {
 Route::get('/dashboard', [VacanciesController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('vacancies.index');
-Route::get('/vacantes/crear', [VacanciesController::class, 'create'])
+
+Route::get('/vacancies/crear', [VacanciesController::class, 'create'])
         ->middleware(['auth', 'verified'])
         ->name('vacancies.create');
-Route::get('/vacantes/{vacancy}/edit', [VacanciesController::class, 'edit'])
+
+Route::get('/vacancies/{vacancy}/edit', [VacanciesController::class, 'edit'])
         ->middleware(['auth', 'verified'])
         ->name('vacancies.edit');
-Route::get('/vacantes/{vacancy}', [VacanciesController::class, 'show'])
+        
+Route::get('/vacancies/{vacancy}', [VacanciesController::class, 'show'])
         ->name('vacancies.show');
 
 Route::middleware('auth', 'verified')->group(function () {

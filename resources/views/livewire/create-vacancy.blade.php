@@ -69,7 +69,7 @@
 
         <div>
             <x-input-label for="file" :value="__('File')" class="mb-2" />
-            <x-text-input id="file" type="file" wire:model="file" :value="old('file')" class="block mt-1 w-full" accept="image/*" />
+            <x-text-input id="file" type="file" wire:model="file" class="block mt-1 w-full" accept="image/*" />
             @error('file')
                 <livewire:show-alert :message="$message" />
             @enderror

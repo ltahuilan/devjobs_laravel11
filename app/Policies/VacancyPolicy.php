@@ -13,7 +13,8 @@ class VacancyPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        //retorna true si el rol es igual a 1 (recruiter)
+        return $user->rol == 1;
     }
 
     /**
@@ -29,7 +30,8 @@ class VacancyPolicy
      */
     public function create(User $user): bool
     {
-        //
+        //retorna true si el rol es igual a 1 (recruiter)
+        return $user->rol == 1 ;
     }
 
     /**

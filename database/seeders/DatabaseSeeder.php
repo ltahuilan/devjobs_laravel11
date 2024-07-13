@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Vacancy;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        // Vacancy::factory(50)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
@@ -30,9 +32,9 @@ class DatabaseSeeder extends Seeder
         //     'password' => Hash::make('password')
         // ]);
 
-        $this->call([
-            SalarySeeder::class,
-            CategorySeeder::class
-        ]);
+        // $this->call([
+        //     SalarySeeder::class,
+        //     CategorySeeder::class
+        // ]);
     }
 }

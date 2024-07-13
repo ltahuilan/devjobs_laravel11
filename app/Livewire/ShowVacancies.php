@@ -32,7 +32,7 @@ class ShowVacancies extends Component
 
     public function render()
     {
-        $vacancies = Vacancy::where('user_id', auth()->user()->id)->paginate(3);
+        $vacancies = Vacancy::where('user_id', auth()->user()->id)->paginate(50);
 
         return view('livewire.show-vacancies', [
             'vacancies' => $vacancies

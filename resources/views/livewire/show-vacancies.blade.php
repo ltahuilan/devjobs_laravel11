@@ -1,34 +1,35 @@
 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+
     <div class="p-6 text-gray-900 dark:text-gray-100">
 
         @forelse ($vacancies as $vacancy )
-            <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 py-6">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-200 dark:border-gray-700 py-6">
                 <div class="flex flex-col space-y-3">
-                    <a href="{{ route('vacancies.show', $vacancy->id) }}" class="font-extrabold text-2xl text-gray-800 dark:text-white">
+                    <a href="{{ route('vacancies.show', $vacancy->id) }}" class="font-extrabold text-2xl text-gray-800 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400">
                         {{ $vacancy->title }}
                     </a>
-                    <a href="#" class="font-bold text-xl text-gray-600 dark:text-gray-300">
+                    <p href="#" class="font-bold text-xl text-gray-600 dark:text-gray-300">
                         {{ $vacancy->company }}
-                    </a>
-                    <a href="#" class="text-gray-500 dark:text-gray-400">
+                    </p>
+                    <p href="#" class="text-gray-500 dark:text-gray-400">
                         Último día para postular: {{ $vacancy->last_date->format('d/m/Y') }}
-                    </a>
+                    </p>
                 </div>
     
-                <div class="flex gap-3">
+                <div class="flex flex-col items-stretch gap-3 mt-4">
 
                     {{-- Show candidates --}}
-                    <a href="" class="bg-gray-700 dark:bg-gray-500 hover:bg-gray-800 hover:dark:bg-gray-600 p-2 text-white rounded">
+                    <a href="" class="bg-gray-700 dark:bg-gray-500 hover:bg-gray-800 hover:dark:bg-gray-600 px-4 py-2 text-white text-center rounded ">
                         {{__('Candidates')}}
                     </a>
 
                     {{-- Edit vacancy --}}
-                    <a href="{{ route('vacancies.edit', $vacancy) }}" class="bg-blue-700 hover:bg-blue-800 p-2 text-white rounded">
+                    <a href="{{ route('vacancies.edit', $vacancy) }}" class="bg-blue-700 hover:bg-blue-800 px-4 py-2 text-white text-center rounded ">
                         {{__('Edit')}}
                     </a>
 
                     {{-- Delete vacancy --}}
-                    <button wire:click="$dispatch('showAlert', {vacancyId: {{ $vacancy->id}} })" class="bg-red-600 dark:bg-red-700 hover:bg-red-700 hover:dark:bg-red-800 p-2 text-white rounded">
+                    <button wire:click="$dispatch('showAlert', {vacancyId: {{ $vacancy->id}} })" class="bg-red-600 dark:bg-red-700 hover:bg-red-700 hover:dark:bg-red-800 px-4 py-2 text-white text-center rounded ">
                         {{__('Delete')}}
                     </button>
                 </div>
