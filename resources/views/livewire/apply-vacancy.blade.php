@@ -25,7 +25,7 @@
     @endif
 
 
-    @push('scripts')
+    {{-- @push('scripts')
         <script>
             // const button = document.querySelector('#apply');
 
@@ -40,7 +40,7 @@
             //     }            
             // });
         </script>
-    @endpush
+    @endpush --}}
 </div>
 
 

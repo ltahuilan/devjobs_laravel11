@@ -55,6 +55,16 @@
             <!-- Settings Dropdown -->
             @auth
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+                    {{-- show count notifications --}}
+                    @if( auth()->user()->rol === 1)
+                        <div class="">
+                            <a href="/notifications" class="flex flex-col justify-center items-center w-7 h-7 bg-indigo-700 hover:bg-indigo-800 text-sm text-white font-bold rounded-full">
+                                {{ auth()->user()->unreadNotifications->count()}}
+                            </a>
+                        </div>
+                    @endif
+
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -114,7 +124,18 @@
             </div>
 
             <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+            <div class="p-2 border-t border-gray-200 dark:border-gray-600">
+
+                {{-- show count notifications --}}
+                @if( auth()->user()->rol === 1)
+                    <div class="flex gap-3 items-center my-4 text-white">
+                        <a href="/notifications" class="flex flex-col justify-center items-center ml-4 w-7 h-7 bg-indigo-700 hover:bg-indigo-800 text-sm font-bold rounded-full">
+                            {{ auth()->user()->unreadNotifications->count()}}
+                        </a>
+                        <p class="text-base font-medium text-gray-600 dark:text-gray-400">Notifications</p>
+                    </div>
+                @endif
+
                 <div class="px-4">
                     <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
