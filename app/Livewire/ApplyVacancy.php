@@ -29,9 +29,11 @@ class ApplyVacancy extends Component
 
     public function apply_vacancy()
     {
-        //validar datos
+        // dd('Aplicando a la vacante...');
+
+        //validar datos 
         $data = $this->validate();
-        
+
         //almacenar el archivo
         $file = $this->attached_file->store('public/attached');
 

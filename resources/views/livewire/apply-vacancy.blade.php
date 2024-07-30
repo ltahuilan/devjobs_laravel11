@@ -1,5 +1,5 @@
-<div class="my-6 p-10 text-lg bg-white dark:bg-gray-800 rounded-lg">
-    {{-- <p class="text-gray-800 dark:text-gray-200">Formulario para aplicar a vacante</p> --}}
+<div class="my-6 p-10 text-lg bg-white dark:bg-neutral-800 rounded-lg">
+    {{-- <p class="text-neutral-800 dark:text-neutral-200">Formulario para aplicar a vacante</p> --}}
 
     @if (session()->has('status'))
         <div class="bg-green-200 dark:bg-green-300 text-green-800 text-center p-2 my-6 shadow-lg rounded">
@@ -17,30 +17,34 @@
                 @enderror            
             </div>
 
-            <x-primary-button id="apply" class="w-full justify-center my-6">
+            <x-primary-button id="apply" class="w-full justify-center my-6 cursor-pointer" >
                 {{ __('Apply vacancy') }}
-            </x-primary-button>
+            </x-primary-button>            
             
-        </form>
+        </form> 
     @endif
 
 
-    {{-- @push('scripts')
+    @push('scripts')
         <script>
-            // const button = document.querySelector('#apply');
+            const btnApply = document.querySelector('#apply');
+            const attachedFile = document.querySelector('#attached_file');
 
-            // let count = 0;
+            //escuchar los cambios en el attachedFile
+            attachedFile.addEventListener('change', event => {
+                if(event.target.value != '') {
+                    console.log('attached file tiene algo...');
 
-            // button.addEventListener('click', function () {
-            //     count++;
-            //     console.log(count);
-            //     if(count > 1) {
-            //         button.disabled = true;
-            //         console.log('button has ben disabled');
-            //     }            
-            // });
+                    btnApply.addEventListener('click', event => {
+        
+                        // event.target.disabled = true;
+                        btnApply.classList.add('cursor-not-allowed');
+                    });
+                }
+            });
+
         </script>
-    @endpush --}}
+    @endpush
 </div>
 
 

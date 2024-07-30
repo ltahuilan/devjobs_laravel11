@@ -23,7 +23,7 @@ class VerifyRolUser
         // }
         
         //Si el usuario autenticado no es un reclutador, se redirecciona hacia la vista /home
-        if(auth()->user()->rol != 1) {
+        if(auth()->user()->rol != 1 ) {
             return redirect()->route('home');
         }
 

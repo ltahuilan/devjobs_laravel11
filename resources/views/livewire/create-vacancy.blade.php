@@ -1,8 +1,8 @@
 <div class="md:w-1/2 mx-auto">
     <form action="" class="space-y-4" wire:submit.prevent='create_vacancy'>
         <div>
-            <x-input-label for="title" :value="__('Vacancy title')" class="mb-2" />
-            <x-text-input id="title" type="text" wire:model="title" :value="old('title')" placeholder="Vacancy title" class="block mt-1 w-full" />
+            <x-input-label for="title" :value="__('Vacancy title')" class="mb-2"/>
+            <x-text-input id="title" type="text" wire:model="title" :value="old('title')" placeholder="Vacancy title" class="block mt-1 w-full" autofocus/>
 
             @error('title')
                 <livewire:show-alert :message="$message" />

@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Candidate;
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
-class CandidateController extends Controller
+class CandidatesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Vacancy $vacancy)
     {
-        //
+        /**
+         * Consultar todos los candidatos relacionados a la vacante
+         * $vacancy->candidate accede a todos los registros relacionados
+         * $vacancy->candidate() accede a la instancia 
+         */
+        $candidates = $vacancy->candidate;
+
+        return view('candidates.index', [
+            'candidates' => $candidates,
+            'vacancy' => $vacancy
+        ]);
     }
 
     /**
@@ -34,7 +44,7 @@ class CandidateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Candidate $candidate)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +52,7 @@ class CandidateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Candidate $candidate)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +60,7 @@ class CandidateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +68,7 @@ class CandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Candidate $candidate)
+    public function destroy(string $id)
     {
         //
     }

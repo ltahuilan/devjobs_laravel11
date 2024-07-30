@@ -1,17 +1,17 @@
-<div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+<div class="bg-white dark:bg-neutral-800 overflow-hidden shadow-sm sm:rounded-lg">
 
-    <div class="p-6 text-gray-900 dark:text-gray-100">
+    <div class="p-6 text-neutral-900 dark:text-neutral-100">
 
         @forelse ($vacancies as $vacancy )
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-200 dark:border-gray-700 py-6">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-neutral-300 dark:border-neutral-700 py-6">
                 <div class="flex flex-col space-y-3">
-                    <a href="{{ route('vacancies.show', $vacancy->id) }}" class="font-extrabold text-2xl text-gray-800 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400">
+                    <a href="{{ route('vacancies.show', $vacancy->id) }}" class="font-extrabold text-2xl text-neutral-800 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400">
                         {{ $vacancy->title }}
                     </a>
-                    <p href="#" class="font-bold text-xl text-gray-600 dark:text-gray-300">
+                    <p href="#" class="font-bold text-xl text-neutral-600 dark:text-neutral-300">
                         {{ $vacancy->company }}
                     </p>
-                    <p href="#" class="text-gray-500 dark:text-gray-400">
+                    <p href="#" class="text-neutral-500 dark:text-neutral-400">
                         Último día para postular: {{ $vacancy->last_date->format('d/m/Y') }}
                     </p>
                 </div>
@@ -19,8 +19,11 @@
                 <div class="flex flex-col items-stretch gap-3 mt-4">
 
                     {{-- Show candidates --}}
-                    <a href="" class="bg-gray-700 dark:bg-gray-500 hover:bg-gray-800 hover:dark:bg-gray-600 px-4 py-2 text-white text-center rounded ">
-                        {{__('Candidates')}}
+                    <a href="{{ route('candidates.index', $vacancy)}}" class="bg-neutral-700 dark:bg-neutral-500 hover:bg-neutral-800 hover:dark:bg-neutral-600 px-4 py-2 text-white text-center rounded ">
+                        <span class="font-bold text-yellow-500">
+                            {{ '(' . $vacancy->candidate->count() . ') '}}
+                        </span>
+                        {{ __('Candidates') }}
                     </a>
 
                     {{-- Edit vacancy --}}
