@@ -47,7 +47,7 @@ class Vacancy extends Model
     }
 
     /**
-     * Una vacante puede tener muchos canditados
+     * Una vacante puede tener muchos candidatados
      * on to many, uno a muchos
      */
     public function candidate()
